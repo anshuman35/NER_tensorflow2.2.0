@@ -12,7 +12,6 @@ from fastprogress.fastprogress import master_bar, progress_bar
 from preprocess import split_text_label, padding, createMatrices
 from seqeval.metrics import classification_report
 
-
 def idx_to_label(predictions, correct, idx2Label): 
     label_pred = []    
     for sentence in predictions:
@@ -24,6 +23,12 @@ def idx_to_label(predictions, correct, idx2Label):
         for sentence in correct:
             for i in sentence:
                 label_correct.append([idx2Label[elem] for elem in i ]) 
+                
+                label_correct = []  
+    if correct != 1:
+        for sentence in correct:
+            for i in sentence:
+                label_correct.append([idx2Label[elem] for elem in 1 ]) 
         
     return label_correct, label_pred
 
